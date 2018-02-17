@@ -2,6 +2,8 @@
   "name": "react-map-api-test-task",
   "version": "0.1.0",
   "private": true,
+  "author": "Living <59living59@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.5",
     "react": "^16.2.0",
