@@ -14,6 +14,10 @@ class App extends Component {
     this.handleRouteChange = this.handleRouteChange.bind(this)
   }
 
+  /**
+   * Handle route change event by clicking enter. Push route to array
+   * @param  {[object]} event Input event
+ */
   handleRouteChange(event) {
    if (event.key === 'Enter') {
      let text = this.textInput.value
@@ -25,10 +29,18 @@ class App extends Component {
     }
   }
 
+  /**
+   * Handle RoutesContainer change
+   * @param  {[object]} newRoutes Array of routes
+   */
   handleRoutesChange(newRoutes) {
     this.setState({routes: newRoutes})
   }
 
+  /**
+   * React render method
+   * @return {[React.Component]} App
+   */
   render() {
     return (
       <div className="App">

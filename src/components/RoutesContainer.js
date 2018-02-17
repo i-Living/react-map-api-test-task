@@ -3,7 +3,7 @@ import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 import _ from 'lodash'
 
 
-// a little function to help us with reordering the result
+// A little function to help with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
@@ -12,6 +12,7 @@ const reorder = (list, startIndex, endIndex) => {
   return result
 };
 
+// Grid size
 const grid = 4
 
 const getItemStyle = (isDragging, draggableStyle) => ({
@@ -45,6 +46,10 @@ class RoutesContainer extends Component {
     this.onDragEnd = this.onDragEnd.bind(this)
   }
 
+  /**
+   * Sort items after drag event. Send new array to parrent.
+   * @param  {[object]} result Sorted items
+   */
   onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
@@ -57,6 +62,10 @@ class RoutesContainer extends Component {
     this.props.onChange(this.state.items)
   }
 
+  /**
+   * Delete items from routes. Send new array to parrent.
+   * @param  {[id]} id Id of deleting item
+   */
   onDeleteItem(id) {
     let items = this.state.items
     _.remove(items, item => item.id === id.id)
