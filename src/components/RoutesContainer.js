@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import React, {Component} from 'react'
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 import _ from 'lodash'
 
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
 
-  return result;
+  return result
 };
 
-const grid = 4;
+const grid = 4
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -38,29 +38,29 @@ const getListStyle = isDraggingOver => ({
 
 class RoutesContainer extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       items: this.props.payload
-    };
-    this.onDragEnd = this.onDragEnd.bind(this);
+    }
+    this.onDragEnd = this.onDragEnd.bind(this)
   }
 
   onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
-      return;
+      return
     }
 
-    const items = reorder(this.state.items, result.source.index, result.destination.index);
+    const items = reorder(this.state.items, result.source.index, result.destination.index)
 
-    this.setState({items});
+    this.setState({items})
     this.props.onChange(this.state.items)
   }
 
   onDeleteItem(id) {
     let items = this.state.items
     _.remove(items, item => item.id === id.id)
-    this.setState({items});
+    this.setState({items})
     this.props.onChange(this.state.items)
   }
 
@@ -93,7 +93,7 @@ class RoutesContainer extends Component {
             </div>)
           }
         </Droppable>
-    </DragDropContext>);
+    </DragDropContext>)
   }
 }
 

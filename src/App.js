@@ -5,13 +5,11 @@ import _ from 'lodash'
 import CustomMap from './components/CustomMap'
 import RoutesContainer from './components/RoutesContainer'
 
-let routes = []
-
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      routes: routes
+      routes: []
     }
     this.handleRouteChange = this.handleRouteChange.bind(this)
   }
@@ -19,6 +17,7 @@ class App extends Component {
   handleRouteChange(event) {
    if (event.key === 'Enter') {
      let text = this.textInput.value
+     let routes = this.state.routes
      routes.push({
        id: `${_.uniqueId()}`, content: `${text}`
      })
@@ -27,7 +26,6 @@ class App extends Component {
   }
 
   handleRoutesChange(newRoutes) {
-    routes = newRoutes
     this.setState({routes: newRoutes})
   }
 
@@ -41,7 +39,7 @@ class App extends Component {
           <div className="row">
       			<div className="col-md-3 container my-2 fill-routes">
               <div className="input-group-sm">
-                <input type="text" className="form-control" ref={(input) => { this.textInput = input; }} onKeyPress={this.handleRouteChange}/>
+                <input type="text" className="form-control" ref={(input) => { this.textInput = input }} onKeyPress={this.handleRouteChange}/>
               </div>
               <RoutesContainer onChange={this.handleRoutesChange.bind(this)} payload={this.state.routes}/>
       			</div>

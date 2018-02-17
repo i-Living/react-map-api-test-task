@@ -1,8 +1,8 @@
-import React from 'react';
-import { YMaps, Map } from 'react-yandex-maps';
-import _ from 'lodash';
+import React from 'react'
+import { YMaps, Map } from 'react-yandex-maps'
+import _ from 'lodash'
 
-const mapState = { center: [55.72, 37.44], zoom: 10 };
+const mapState = { center: [55.72, 37.44], zoom: 10 }
 
 class CustomMap extends React.Component {
   /**
