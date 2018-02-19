@@ -26,13 +26,13 @@ class CustomMap extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.state.placemarks.length === nextProps.payload.length) {
-      this.sortPoints(nextProps.payload)
+      this.sortPlacemarks(nextProps.payload)
     }
     if (this.state.placemarks.length < nextProps.payload.length) {
-     this.addPoint(nextProps.payload)
+     this.addPlacemark(nextProps.payload)
     }
     if (this.state.placemarks.length > nextProps.payload.length) {
-     this.deletePoint(nextProps.payload)
+     this.deletePlacemark(nextProps.payload)
     }
   }
 
@@ -56,7 +56,7 @@ class CustomMap extends React.Component {
    * Add placemark to map
    * @param {[object]} payload Array of routes with id and content
    */
-  addPoint(payload) {
+  addPlacemark(payload) {
     // Gets last added point
     let point = payload[this.props.payload.length - 1]
     // Gets index of adding point
@@ -153,14 +153,14 @@ class CustomMap extends React.Component {
    * Delete Placemark from map and updates polyline
    * @param  {[object]} payload  Array of routes with id and content
    */
-  deletePoint(payload) {
+  deletePlacemark(payload) {
     // New placemarks array without deleted point
     let placemarks = _.intersectionBy(this.state.placemarks, payload, 'id')
     this.updateIndexes(placemarks)
     this.setState({placemarks: placemarks}, function () {
       this.updatePolyline(placemarks)
       this.updateMap()
-      // TODO: Update only placemarks not full map. Find out why simple deleting goes wrong.
+      // TODO: Update only placemarks, not full map. Find out why simple deleting goes wrong.
     });
   }
 
@@ -168,7 +168,7 @@ class CustomMap extends React.Component {
    * Sort points by index based on input array
    * @param  {[object]} arr sorted array
    */
-  sortPoints(arr) {
+  sortPlacemarks(arr) {
     let placemarks = this.state.placemarks
     placemarks.sort((a, b) =>
       arr.findIndex(({ id }) => a.id === id) -
