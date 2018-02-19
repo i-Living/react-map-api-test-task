@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   /**
-   * Handle route change event by clicking enter. Push route to array
+   * Handle route change event by clicking enter. Push route to array.
    * @param  {[object]} event Input event
  */
   handleRouteChange(event) {
@@ -27,6 +27,18 @@ class App extends Component {
      })
      this.setState({'routes': routes})
     }
+  }
+
+  /**
+   * Handle add btn click event. Push route to array.
+   */
+  onAddBtnClick() {
+    let text = this.textInput ? this.textInput.value : 'Route'
+    let routes = this.state.routes
+    routes.push({
+      id: `${_.uniqueId()}`, content: `${text}`
+    })
+    this.setState({'routes': routes})
   }
 
   /**
@@ -50,8 +62,11 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
       			<div className="col-md-3 container my-2 fill-routes">
-              <div className="input-group-sm">
+              <div className="input-group-sm d-flex justify-content-center">
                 <input type="text" className="form-control" ref={(input) => { this.textInput = input }} onKeyPress={this.handleRouteChange}/>
+                <span className="input-group-btn">
+                  <button className="btn btn-secondary btn-sm" onClick={this.onAddBtnClick.bind(this)} type="button">Add</button>
+                </span>
               </div>
               <RoutesContainer onChange={this.handleRoutesChange.bind(this)} payload={this.state.routes}/>
       			</div>
