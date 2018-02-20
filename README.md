@@ -1,6 +1,6 @@
 # react-map-api-test-task
 
-#### Realisation of test task witch uses yandex map to create markered line route.
+#### Realisation of test task which uses yandex map to create markered line route.
 
 #### Реализация тестового задания, с использованием Яндекс карт, для построения линейного маршрута по точкам.
 
