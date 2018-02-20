@@ -5,6 +5,7 @@
 #### Реализация тестового задания, с использованием Яндекс карт, для построения линейного маршрута по точкам.
 
 [Постановка задачи](https://github.com/i-Living/react-map-api-test-task/blob/master/Q%20and%20A/questions%20and%20test%20task.pdf)
+
 [Ответы на вопросы](https://github.com/i-Living/react-map-api-test-task/blob/master/Q%20and%20A/qa.md)
 
 ### Онлайн просмотр
